@@ -1,3 +1,5 @@
+
+
 ui <- fluidPage(
   titlePanel("Population in Linköping"),
 
@@ -44,11 +46,12 @@ server <- function(input, output){
                              caption.placement = "top", caption = "Second year")
 
   output$plot <- renderPlot({
-    ggplot(data()[data()$gender %in% input$Genders, ])+geom_line(aes(x=Year,y=value,color=gender))+theme_bw() + ylab("Population Count") +
-      labs(title = "Linkoping population by gender") + theme(plot.title = element_text(hjust = 0.5))
+    ggplot2::ggplot(data()[data()$gender %in% input$Genders, ])+
+      ggplot2::geom_line(ggplot2::aes(x=Year,y=value,color=gender))+ ggplot2::theme_bw()
+    + ggplot2::ylab("Population Count") +
+      ggplot2::labs(title = "Linkoping population by gender") + ggplot2::theme(plot.title = element_text(hjust = 0.5))
   })
 }
 
 shinyApp(ui = ui, server = server)
-
 
