@@ -1,5 +1,4 @@
 
-
 ui <- fluidPage(
   titlePanel("Population in Linköping"),
 
@@ -47,9 +46,8 @@ server <- function(input, output){
 
   output$plot <- renderPlot({
     ggplot2::ggplot(data()[data()$gender %in% input$Genders, ])+
-      ggplot2::geom_line(ggplot2::aes(x=Year,y=value,color=gender))+ ggplot2::theme_bw()
-    + ggplot2::ylab("Population Count") +
-      ggplot2::labs(title = "Linkoping population by gender") + ggplot2::theme(plot.title = element_text(hjust = 0.5))
+      ggplot2::geom_line(ggplot2::aes(x=Year,y=value,color=gender))+ ggplot2::theme_bw()+ ggplot2::ylab("Population Count") +
+      ggplot2::labs(title = "Linkoping population by gender") + ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5))
   })
 }
 
